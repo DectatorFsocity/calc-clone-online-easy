@@ -49,7 +49,6 @@ export const Calculator = () => {
       setDisplay(String(newValue));
       setPreviousValue(newValue);
       
-      // Add to history
       const historyEntry = `${currentValue} ${operation} ${inputValue} = ${newValue}`;
       setHistory(prev => [historyEntry, ...prev].slice(0, 10));
     }
@@ -103,54 +102,166 @@ export const Calculator = () => {
     setWaitingForOperand(true);
   };
 
-  const buttonClass = "h-12 text-lg font-medium transition-all duration-200 hover:scale-105";
-  const numberButtonClass = `${buttonClass} bg-background hover:bg-accent border border-border`;
-  const operatorButtonClass = `${buttonClass} bg-primary hover:bg-primary/90 text-primary-foreground`;
-  const functionButtonClass = `${buttonClass} bg-secondary hover:bg-secondary/80 text-secondary-foreground`;
-
   return (
     <div className="space-y-6">
-      <Card className="shadow-lg">
-        <CardHeader>
-          <CardTitle className="text-center">Scientific Calculator</CardTitle>
+      <Card className="shadow-xl border-0 bg-white">
+        <CardHeader className="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-t-lg">
+          <CardTitle className="text-center text-xl">Scientific Calculator</CardTitle>
         </CardHeader>
-        <CardContent className="space-y-4">
+        <CardContent className="p-6 space-y-4">
           <CalculatorDisplay value={display} />
           
           <div className="grid grid-cols-5 gap-2">
-            {/* First row - Functions */}
-            <Button className={functionButtonClass} onClick={clear}>C</Button>
-            <Button className={functionButtonClass} onClick={() => handleFunction("+/-")}>+/-</Button>
-            <Button className={functionButtonClass} onClick={() => handleFunction("%")}>%</Button>
-            <Button className={functionButtonClass} onClick={() => handleFunction("√")}>√</Button>
-            <Button className={operatorButtonClass} onClick={() => performOperation("÷")}>÷</Button>
+            {/* Function row */}
+            <Button 
+              className="h-12 bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium" 
+              onClick={clear}
+            >
+              C
+            </Button>
+            <Button 
+              className="h-12 bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium" 
+              onClick={() => handleFunction("+/-")}
+            >
+              +/-
+            </Button>
+            <Button 
+              className="h-12 bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium" 
+              onClick={() => handleFunction("%")}
+            >
+              %
+            </Button>
+            <Button 
+              className="h-12 bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium" 
+              onClick={() => handleFunction("√")}
+            >
+              √
+            </Button>
+            <Button 
+              className="h-12 bg-orange-500 hover:bg-orange-600 text-white font-bold" 
+              onClick={() => performOperation("÷")}
+            >
+              ÷
+            </Button>
 
-            {/* Second row */}
-            <Button className={functionButtonClass} onClick={() => handleFunction("x²")}>x²</Button>
-            <Button className={numberButtonClass} onClick={() => inputNumber("7")}>7</Button>
-            <Button className={numberButtonClass} onClick={() => inputNumber("8")}>8</Button>
-            <Button className={numberButtonClass} onClick={() => inputNumber("9")}>9</Button>
-            <Button className={operatorButtonClass} onClick={() => performOperation("×")}>×</Button>
+            {/* Number rows */}
+            <Button 
+              className="h-12 bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium" 
+              onClick={() => handleFunction("x²")}
+            >
+              x²
+            </Button>
+            <Button 
+              className="h-12 bg-white hover:bg-gray-50 text-gray-900 border font-medium text-lg" 
+              onClick={() => inputNumber("7")}
+            >
+              7
+            </Button>
+            <Button 
+              className="h-12 bg-white hover:bg-gray-50 text-gray-900 border font-medium text-lg" 
+              onClick={() => inputNumber("8")}
+            >
+              8
+            </Button>
+            <Button 
+              className="h-12 bg-white hover:bg-gray-50 text-gray-900 border font-medium text-lg" 
+              onClick={() => inputNumber("9")}
+            >
+              9
+            </Button>
+            <Button 
+              className="h-12 bg-orange-500 hover:bg-orange-600 text-white font-bold" 
+              onClick={() => performOperation("×")}
+            >
+              ×
+            </Button>
 
-            {/* Third row */}
-            <Button className={functionButtonClass} onClick={() => handleFunction("1/x")}>1/x</Button>
-            <Button className={numberButtonClass} onClick={() => inputNumber("4")}>4</Button>
-            <Button className={numberButtonClass} onClick={() => inputNumber("5")}>5</Button>
-            <Button className={numberButtonClass} onClick={() => inputNumber("6")}>6</Button>
-            <Button className={operatorButtonClass} onClick={() => performOperation("-")}>-</Button>
+            <Button 
+              className="h-12 bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium" 
+              onClick={() => handleFunction("1/x")}
+            >
+              1/x
+            </Button>
+            <Button 
+              className="h-12 bg-white hover:bg-gray-50 text-gray-900 border font-medium text-lg" 
+              onClick={() => inputNumber("4")}
+            >
+              4
+            </Button>
+            <Button 
+              className="h-12 bg-white hover:bg-gray-50 text-gray-900 border font-medium text-lg" 
+              onClick={() => inputNumber("5")}
+            >
+              5
+            </Button>
+            <Button 
+              className="h-12 bg-white hover:bg-gray-50 text-gray-900 border font-medium text-lg" 
+              onClick={() => inputNumber("6")}
+            >
+              6
+            </Button>
+            <Button 
+              className="h-12 bg-orange-500 hover:bg-orange-600 text-white font-bold" 
+              onClick={() => performOperation("-")}
+            >
+              -
+            </Button>
 
-            {/* Fourth row */}
-            <Button className={functionButtonClass} onClick={() => inputNumber("(")}>(</Button>
-            <Button className={numberButtonClass} onClick={() => inputNumber("1")}>1</Button>
-            <Button className={numberButtonClass} onClick={() => inputNumber("2")}>2</Button>
-            <Button className={numberButtonClass} onClick={() => inputNumber("3")}>3</Button>
-            <Button className={operatorButtonClass} onClick={() => performOperation("+")}>+</Button>
+            <Button 
+              className="h-12 bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium" 
+              onClick={() => inputNumber("(")}
+            >
+              (
+            </Button>
+            <Button 
+              className="h-12 bg-white hover:bg-gray-50 text-gray-900 border font-medium text-lg" 
+              onClick={() => inputNumber("1")}
+            >
+              1
+            </Button>
+            <Button 
+              className="h-12 bg-white hover:bg-gray-50 text-gray-900 border font-medium text-lg" 
+              onClick={() => inputNumber("2")}
+            >
+              2
+            </Button>
+            <Button 
+              className="h-12 bg-white hover:bg-gray-50 text-gray-900 border font-medium text-lg" 
+              onClick={() => inputNumber("3")}
+            >
+              3
+            </Button>
+            <Button 
+              className="h-12 bg-orange-500 hover:bg-orange-600 text-white font-bold" 
+              onClick={() => performOperation("+")}
+            >
+              +
+            </Button>
 
-            {/* Fifth row */}
-            <Button className={functionButtonClass} onClick={() => inputNumber(")")}>)</Button>
-            <Button className={`${numberButtonClass} col-span-2`} onClick={() => inputNumber("0")}>0</Button>
-            <Button className={numberButtonClass} onClick={inputDecimal}>.</Button>
-            <Button className={`${operatorButtonClass} bg-orange-500 hover:bg-orange-600`} onClick={() => performOperation("=")}>=</Button>
+            <Button 
+              className="h-12 bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium" 
+              onClick={() => inputNumber(")")}
+            >
+              )
+            </Button>
+            <Button 
+              className="h-12 bg-white hover:bg-gray-50 text-gray-900 border font-medium text-lg col-span-2" 
+              onClick={() => inputNumber("0")}
+            >
+              0
+            </Button>
+            <Button 
+              className="h-12 bg-white hover:bg-gray-50 text-gray-900 border font-medium text-lg" 
+              onClick={inputDecimal}
+            >
+              .
+            </Button>
+            <Button 
+              className="h-12 bg-blue-600 hover:bg-blue-700 text-white font-bold text-lg" 
+              onClick={() => performOperation("=")}
+            >
+              =
+            </Button>
           </div>
         </CardContent>
       </Card>
