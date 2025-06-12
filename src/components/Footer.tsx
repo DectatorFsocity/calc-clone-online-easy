@@ -1,11 +1,10 @@
-
 export const Footer = () => {
   return (
     <footer className="bg-gray-900 text-white mt-16">
       <div className="container mx-auto px-4 py-12">
         <div className="grid md:grid-cols-5 gap-8">
           <div className="md:col-span-2">
-            <h3 className="text-xl font-bold mb-4">Online Calculator</h3>
+            <h3 className="text-xl font-bold mb-4">InstaCalculator.com</h3>
             <p className="text-gray-300 mb-4">
               Free online calculator for all your math needs. From basic arithmetic 
               to advanced scientific calculations, we've got you covered.
@@ -66,7 +65,7 @@ export const Footer = () => {
               <a href="#" className="hover:text-white transition-colors">About</a>
             </div>
             <p className="text-sm text-gray-400">
-              © 2024 Online Calculator. All rights reserved.
+              © 2024 InstaCalculator.com. All rights reserved.
             </p>
           </div>
         </div>
